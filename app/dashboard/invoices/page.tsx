@@ -10,10 +10,17 @@ import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 export default async function Page({
   searchParams,
 }: {
-  searchParams?: { [key: string]: string | string[] | undefined };
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
 }) {
-  const query = typeof searchParams?.query === 'string' ? searchParams.query : '';
-  const currentPage = typeof searchParams?.page === 'string' ? Number(searchParams.page) : 1;
+  // Properly await searchParams
+  const params = await searchParams;
+  
+  const query = params?.query ?? '';
+  const currentPage = Number(params?.page) || 1;
+  
   const totalPages = await fetchInvoicesPages(query);
 
   return (
