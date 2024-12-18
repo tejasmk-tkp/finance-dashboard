@@ -14,16 +14,16 @@ export async function fetchRevenue() {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
 
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    //console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    //console.log('Data fetch completed after 3 seconds.');
 
     return data.rows;
   } catch (error) {
-    console.error('Database Error:', error);
+    //console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
   }
 }
@@ -43,7 +43,7 @@ export async function fetchLatestInvoices() {
     }));
     return latestInvoices;
   } catch (error) {
-    console.error('Database Error:', error);
+    //console.error('Database Error:', error);
     throw new Error('Failed to fetch the latest invoices.');
   }
 }
@@ -78,16 +78,17 @@ export async function fetchCardData() {
       totalPendingInvoices,
     };
   } catch (error) {
-    console.error('Database Error:', error);
+    //console.error('Database Error:', error);
     throw new Error('Failed to fetch card data.');
   }
 }
 
 const ITEMS_PER_PAGE = 6;
-export async function fetchFilteredInvoices(
-  query: string,
-  currentPage: number,
-) {
+
+export async function fetchFilteredInvoices(query: string, currentPage: number) {
+  //console.log('fetchFilteredInvoices - Query:', query);
+  //console.log('fetchFilteredInvoices - Current Page:', currentPage);
+
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
@@ -112,9 +113,11 @@ export async function fetchFilteredInvoices(
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
 
+    //console.log('fetchFilteredInvoices - Invoices returned:', invoices.rows.length);
+
     return invoices.rows;
   } catch (error) {
-    console.error('Database Error:', error);
+    //console.error('Database Error:', error);
     throw new Error('Failed to fetch invoices.');
   }
 }
@@ -178,7 +181,7 @@ export async function fetchCustomers() {
     const customers = data.rows;
     return customers;
   } catch (err) {
-    console.error('Database Error:', err);
+    //console.error('Database Error:', err);
     throw new Error('Failed to fetch all customers.');
   }
 }
@@ -211,7 +214,7 @@ export async function fetchFilteredCustomers(query: string) {
 
     return customers;
   } catch (err) {
-    console.error('Database Error:', err);
+    //console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
   }
 }
