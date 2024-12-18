@@ -20,16 +20,16 @@ export default async function CustomersTable({
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
-            <div className="overflow-hidden rounded-md bg-gray-50 p-2 md:pt-0">
+            <div className="bg-gray-50 p-2 md:pt-0 rounded-md overflow-hidden">
               <div className="md:hidden">
                 {customers?.map((customer) => (
                   <div
                     key={customer.id}
-                    className="mb-2 w-full rounded-md bg-white p-4"
+                    className="bg-white mb-2 p-4 rounded-md w-full"
                   >
-                    <div className="flex items-center justify-between border-b pb-4">
+                    <div className="flex justify-between items-center pb-4 border-b">
                       <div>
-                        <div className="mb-2 flex items-center">
+                        <div className="flex items-center mb-2">
                           <div className="flex items-center gap-3">
                             <Image
                               src={customer.image_url}
@@ -41,17 +41,17 @@ export default async function CustomersTable({
                             <p>{customer.name}</p>
                           </div>
                         </div>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-gray-500 text-sm">
                           {customer.email}
                         </p>
                       </div>
                     </div>
-                    <div className="flex w-full items-center justify-between border-b py-5">
-                      <div className="flex w-1/2 flex-col">
+                    <div className="flex justify-between items-center py-5 border-b w-full">
+                      <div className="flex flex-col w-1/2">
                         <p className="text-xs">Pending</p>
                         <p className="font-medium">{customer.total_pending}</p>
                       </div>
-                      <div className="flex w-1/2 flex-col">
+                      <div className="flex flex-col w-1/2">
                         <p className="text-xs">Paid</p>
                         <p className="font-medium">{customer.total_paid}</p>
                       </div>
@@ -62,10 +62,10 @@ export default async function CustomersTable({
                   </div>
                 ))}
               </div>
-              <table className="hidden min-w-full rounded-md text-gray-900 md:table">
-                <thead className="rounded-md bg-gray-50 text-left text-sm font-normal">
+              <table className="hidden rounded-md min-w-full text-gray-900 md:table">
+                <thead className="bg-gray-50 rounded-md font-normal text-left text-sm">
                   <tr>
-                    <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                    <th scope="col" className="px-4 py-5 sm:pl-6 font-medium">
                       Name
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
@@ -86,7 +86,7 @@ export default async function CustomersTable({
                 <tbody className="divide-y divide-gray-200 text-gray-900">
                   {customers.map((customer) => (
                     <tr key={customer.id} className="group">
-                      <td className="whitespace-nowrap bg-white py-5 pl-4 pr-3 text-sm text-black group-first-of-type:rounded-md group-last-of-type:rounded-md sm:pl-6">
+                      <td className="bg-white py-5 pr-3 pl-4 sm:pl-6 group-first-of-type:rounded-md group-last-of-type:rounded-md text-black text-sm whitespace-nowrap">
                         <div className="flex items-center gap-3">
                           <Image
                             src={customer.image_url}
@@ -98,16 +98,16 @@ export default async function CustomersTable({
                           <p>{customer.name}</p>
                         </div>
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                      <td className="bg-white px-4 py-5 text-sm whitespace-nowrap">
                         {customer.email}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                      <td className="bg-white px-4 py-5 text-sm whitespace-nowrap">
                         {customer.total_invoices}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
+                      <td className="bg-white px-4 py-5 text-sm whitespace-nowrap">
                         {customer.total_pending}
                       </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md">
+                      <td className="bg-white px-4 py-5 group-first-of-type:rounded-md group-last-of-type:rounded-md text-sm whitespace-nowrap">
                         {customer.total_paid}
                       </td>
                     </tr>
