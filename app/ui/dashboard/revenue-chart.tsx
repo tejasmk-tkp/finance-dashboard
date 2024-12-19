@@ -9,8 +9,6 @@ import { fetchRevenue } from '@/app/lib/data';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
-import { FC, JSX } from 'react';
-
 export default async function RevenueChart() {
   const revenue = await fetchRevenue();
 
